@@ -18,8 +18,8 @@ const { buyTollRoadCard, topUpBalance, useTollRoad } = require("./utils");
 async function getTollAccess() {
   try {
     const card = await buyTollRoadCard(25);
-    const topUpCard = await topUpBalance(10);
-    const scanCard = await useTollRoad(topUpCard);
+    const topUpCard = await topUpBalance(card, 10);
+    await useTollRoad(topUpCard);
   } catch (error) {
     console.log(error.message);
   }
